@@ -7,6 +7,9 @@ export default function Layout() {
         {/* Header */}
         <Outlet />
         {/* Footer */}
+        <footer className='flex flex-col py-6 px-[8%] items-center'>
+            <div>&copy; MovieBox by Ibiyemi Samuel 2023</div>
+        </footer>
     </div>
   )
 }
