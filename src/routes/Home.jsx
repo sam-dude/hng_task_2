@@ -2,7 +2,7 @@ import {useEffect, useState} from 'react'
 import { Link } from 'react-router-dom';
 
 export default function Home() {
-  const token = process.env.API_KEY
+  const token = import.meta.env.API_KEY
   const [movies, setMovies] = useState([])
 
   const url = 'https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1';
