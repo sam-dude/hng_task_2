@@ -16,7 +16,7 @@ export default function MovieDetail() {
 export async function MovieLoader ({ params }){
     const {id} = params
     const url = `https://api.themoviedb.org/3/movie/${id}`;
-    const token = import.meta.env.API_KEY
+    const token = import.meta.env.VITE_API_KEY
     const config = {
         headers: {
             'Authorization': `Bearer ${token}`,

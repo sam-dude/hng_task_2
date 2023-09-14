@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 #hero{
-  background-image: url('./assets/pxfuel.jpg');
+  background-image: url('./assets/Poster.jpg');
   background-position: center;
   background-size: cover;
 }

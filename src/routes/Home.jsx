@@ -2,7 +2,7 @@ import {useEffect, useState} from 'react'
 import { Link } from 'react-router-dom';
 
 export default function Home() {
-  const token = import.meta.env.API_KEY
+  const token = import.meta.env.VITE_API_KEY
   const [movies, setMovies] = useState([])
 
   const url = 'https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1';
@@ -15,6 +15,7 @@ export default function Home() {
   }
 
   useEffect(() => {
+    console.log(token)
     fetch(url, config)
     .then(response => {
       if (!response.ok) {
@@ -64,7 +65,7 @@ export default function Home() {
                 <Link to={`/movies/${movie.id}`} className='' key={i} data-testid='movie-card'>
                   <img data-testid="movie-poster" src={`https://image.tmdb.org/t/p/original${movie.poster_path}`} alt='movie-poster' className=' w-full'/>
                   <div>USA <span data-testid="movie-release-date">{movie.release_date}</span></div>
-                  <div className='font-bold text-xl' data-testid='movie-title'>{movie.title}</div>
+                  <div className='font-bold text-lg' data-testid='movie-title'>{movie.title}</div>
                   <div>Action, Horror, Adventure</div>
                 </Link>
               ))
