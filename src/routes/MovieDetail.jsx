@@ -6,12 +6,17 @@ export default function MovieDetail() {
     const res = useLoaderData()
     console.log(res)
   return (
-    <div className='px-[4%]'>
+    <div className='px-[4%] mt-2'>
         <div>
-            <img src={`https://image.tmdb.org/t/p/original${res.backdrop_path}`} alt="" className='rounded-xl max-h-[300px] w-full object-cover'/>
-            <div className='flex flex-row gap-2 my-3'>
-                <div>{res.title}</div>
-                <div>{res.release_date}</div>
+            <img src={res.backdrop_path && `https://image.tmdb.org/t/p/original${res.backdrop_path}`} alt="" className='rounded-xl max-h-[400px] min-h-[400px] w-full object-cover'/>
+            <div className='flex flex-row gap-2 my-3 items-center flex-wrap'>
+                <div className='font-bold'>{res.title}</div>
+                <div className='font-bold'>{res.release_date}</div>
+                {
+                    res.genres.map(item => (
+                        <div key={item.id} className='text-[12px] border border-red-500 text-red-500 py-1 px-2 font-bold ml-2 rounded-xl'>{item.name}</div>
+                    ))
+                }
             </div>
         </div>
         <p>{res.overview}</p>
