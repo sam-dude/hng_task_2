@@ -3,6 +3,7 @@ import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } 
 import Layout from './Layout'
 import Home from './routes/Home'
 import MovieDetail, { MovieLoader } from './routes/MovieDetail'
+import ErrorElement from './components/ErrorElement'
 
 function App() {
   const router = createBrowserRouter(
@@ -13,7 +14,7 @@ function App() {
       >
         <Route element={<Home />} index/>
         <Route path="movies">
-          <Route element={<MovieDetail />} path=':id' loader={MovieLoader}/>
+          <Route element={<MovieDetail />} path=':id' loader={MovieLoader} errorElement={<ErrorElement />}/>
         </Route>
       </Route>
     )
