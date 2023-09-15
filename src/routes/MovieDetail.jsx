@@ -6,7 +6,7 @@ export default function MovieDetail() {
     const res = useLoaderData()
     console.log(res)
   return (
-    <div className='px-[4%] mt-2'>
+    <div className='px-[4%] mt-2 mb-4'>
         <div>
             <img src={res.backdrop_path && `https://image.tmdb.org/t/p/original${res.backdrop_path}`} alt="" className='rounded-xl max-h-[400px] min-h-[400px] w-full object-cover'/>
             <div className='flex flex-row gap-2 my-3 items-center flex-wrap'>
@@ -14,12 +14,12 @@ export default function MovieDetail() {
                 <div className='font-bold' data-testid='movie-release-date'>{res.release_date}</div>
                 {
                     res.genres.map(item => (
-                        <div key={item.id} className='text-[12px] border border-red-500 text-red-500 py-1 px-2 font-bold ml-2 rounded-xl'>{item.name}</div>
+                        <div key={item.id} className='text-[12px] border-2 border-red-500 text-red-500 py-1 px-2 font-bold ml-2 rounded-xl'>{item.name}</div>
                     ))
                 }
             </div>
         </div>
-        <p data-testid="movie">{res.overview}</p>
+        <p data-testid="movie" className='my-2'>{res.overview}</p>
     </div>
   )
 }
