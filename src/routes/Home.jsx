@@ -16,7 +16,6 @@ export default function Home() {
   }
 
   useEffect(() => {
-    console.log(token)
     fetch(url, config)
     .then(response => {
       if (!response.ok) {
