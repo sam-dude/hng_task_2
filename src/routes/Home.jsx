@@ -1,6 +1,6 @@
 import {useEffect, useState} from 'react'
 import { Link } from 'react-router-dom';
-
+import logo from '../assets/Logo.png'
 
 export default function Home() {
   const token = import.meta.env.VITE_API_KEY
@@ -39,7 +39,7 @@ export default function Home() {
         <section className='min-h-screen flex items-center relative' id="hero">
             {/* Header */}
             <div className='flex flex-row w-full items-center absolute top-0 justify-between py-2 px-[8%] '>
-              <img src="./assets/Logo.png" alt="logo" className='h-12'/>
+              <img src={logo} alt="logo" className='h-12'/>
 
               <form className='border border-white rounded-xl p-2 py-2 flex items-center w-full max-w-[400px]'>
                 <input type="text" className='border-none outline-none bg-transparent w-full text-white' placeholder='What do you want to watch?'/>
