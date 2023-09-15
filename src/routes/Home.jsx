@@ -1,6 +1,8 @@
 import {useEffect, useState} from 'react'
 import { Link } from 'react-router-dom';
-import logo from '../assets/Logo.png'
+import logo from '../assets/Logo.png';
+import tomato from '../assets/tomato.png';
+import imdb from '../assets/imdb.png'
 
 export const FavIcon  = () =>{
   const [isFav, setIsFav] = useState(false)
@@ -118,11 +120,15 @@ export default function Home() {
               movies && movies.slice(0, 10).map((movie, i) => {
                
               return(
-                <div className="relative " data-testid='movie-card' key={i}>
+                <div className="relative mb-4" data-testid='movie-card' key={i}>
                 <Link to={`/movies/${movie.id}`}  >
                   <img data-testid="movie-poster" src={`https://image.tmdb.org/t/p/original${movie.poster_path}`} alt='movie-poster' className=' w-full h-[450px] md:h-[300px] object-cover'/>
                   <div className="text-sm">USA <span data-testid="movie-release-date">{movie.release_date}</span></div>
                   <div className='font-bold' data-testid='movie-title'>{movie.title}</div>
+                  <div className='flex flex-row justify-between py-2'>
+                    <div className='flex gap-2 items-center'><img src={imdb} alt="imbd" className='w-[25px]'/>{movie.vote_average}</div>
+                    <div className='flex gap-2 items-center'><img src={tomato} alt="imbd" className='w-[15px] h-[15px]'/>{movie.popularity}</div>
+                  </div>
                   <div className="text-sm">Action, Horror, Adventure</div>
                 </Link>
                  <FavIcon />
