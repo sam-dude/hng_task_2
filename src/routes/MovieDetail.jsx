@@ -6,7 +6,7 @@ export default function MovieDetail() {
     const res = useLoaderData()
     console.log(res)
   return (
-    <div className='px-[4%] mt-2 mb-4'>
+    <main className='px-[4%] mt-2 mb-4'>
         <div>
             <img src={res.backdrop_path && `https://image.tmdb.org/t/p/original${res.backdrop_path}`} alt="" className='rounded-xl max-h-[400px] min-h-[400px] w-full object-cover'/>
             <div className='flex flex-row gap-2 my-3 items-center flex-wrap'>
@@ -32,7 +32,7 @@ export default function MovieDetail() {
                 {res.production_countries?.map((com, i) => (<div className='flex gap-2' key={i}>{com.name}</div>))}
             </div>
         </div>
-    </div>
+    </main>
   )
 }
 
