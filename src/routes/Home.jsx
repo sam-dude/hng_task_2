@@ -74,7 +74,10 @@ export default function Home() {
         <section className='min-h-screen px-[4%] '>
           <div className='flex justify-between w-full items-end my-6'>
             <h3 className='font-semibold text-xl md:text-2xl'>Featured Movies</h3>
-            <div className='text-red-500'>See more </div>
+            <div className='text-red-500 flex flex-row gap-2 items-center'>See more <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+  <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+</svg>
+</div>
           </div>
 
           {/* List of movies */}
