@@ -63,9 +63,9 @@ export default function Home() {
 
             {
               movies.slice(0, 10).map((movie, i) => (
-                <div className="relative" data-testid='movie-card' key={i}>
+                <div className="relative " data-testid='movie-card' key={i}>
                 <Link to={`/movies/${movie.id}`}  >
-                  <img data-testid="movie-poster" src={`https://image.tmdb.org/t/p/original${movie.poster_path}`} alt='movie-poster' className=' w-full'/>
+                  <img data-testid="movie-poster" src={`https://image.tmdb.org/t/p/original${movie.poster_path}`} alt='movie-poster' className=' w-full h-[450px] md:h-[300px] object-cover'/>
                   <div className="text-sm">USA <span data-testid="movie-release-date">{movie.release_date}</span></div>
                   <div className='font-bold' data-testid='movie-title'>{movie.title}</div>
                   <div className="text-sm">Action, Horror, Adventure</div>
