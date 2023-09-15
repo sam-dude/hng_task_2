@@ -1,5 +1,5 @@
 import React from 'react'
-import { useLoaderData, useParams } from 'react-router-dom'
+import { useLoaderData } from 'react-router-dom'
 
 export default function MovieDetail() {
     
@@ -13,7 +13,7 @@ export default function MovieDetail() {
                 <div className='font-semibold' data-testid='movie-title'>{res.title}</div><span>◾</span>
                 
                 <div className='font-semibold ' data-testid='movie-release-date'>{res.release_date}</div><span>◾</span>
-                <div className='font-semibold mr-4' ><span data-testid='movie-title'>{res.runtime}</span>m</div> 
+                <div className='font-semibold mr-4' ><span data-testid='movie-runtime'>{res.runtime}</span>m</div> 
                 {
                     res.genres.map(item => (
                         <div key={item.id} className='text-[12px] border border-red-500 text-red-500 py-1 px-2 font-bold rounded-xl'>{item.name}</div>
@@ -21,7 +21,7 @@ export default function MovieDetail() {
                 }
             </div>
         </div>
-        <p data-testid="movie" className='my-2'>{res.overview}</p>
+        <p data-testid="movie-overview" className='my-2'>{res.overview}</p>
         <div className='mt-2'>
             <div>
                 <span className='font-semibold text-red-500'>Production Company: </span>
