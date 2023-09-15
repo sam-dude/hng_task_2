@@ -10,9 +10,9 @@ export default function MovieDetail() {
         <div>
             <img src={res.backdrop_path && `https://image.tmdb.org/t/p/original${res.backdrop_path}`} alt="" className='rounded-xl max-h-[400px] min-h-[400px] w-full object-cover'/>
             <div className='flex flex-row gap-2 my-3 items-center flex-wrap'>
-                <div className='font-semibold' data-testid='movie-title'>{res.title}</div> 
+                <div className='font-semibold' data-testid='movie-title'>{res.title}</div><span>◾</span>
                 
-                <div className='font-semibold ' data-testid='movie-release-date'>{res.release_date}</div>
+                <div className='font-semibold ' data-testid='movie-release-date'>{res.release_date}</div><span>◾</span>
                 <div className='font-semibold mr-4' ><span data-testid='movie-title'>{res.runtime}</span>m</div> 
                 {
                     res.genres.map(item => (
