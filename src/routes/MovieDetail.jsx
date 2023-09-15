@@ -22,6 +22,16 @@ export default function MovieDetail() {
             </div>
         </div>
         <p data-testid="movie" className='my-2'>{res.overview}</p>
+        <div className='mt-2'>
+            <div>
+                <span className='font-semibold text-red-500'>Production Company: </span>
+                {res.production_companies?.map(com => (<div className='flex gap-2' key={com.id}><img className='w-[200px]' src={`https://image.tmdb.org/t/p/original${com.logo_path}`} alt="" /></div>))}
+            </div>
+            <div className='mt-2'>
+                <span className='font-semibold text-red-500'>Production Countries: </span>
+                {res.production_countries?.map((com, i) => (<div className='flex gap-2' key={i}>{com.name}</div>))}
+            </div>
+        </div>
     </div>
   )
 }
