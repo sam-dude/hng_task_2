@@ -61,7 +61,7 @@ export default function Home() {
                 </svg>
               </div>
 
-              <div className=' flex-grow md:flex-grow-0'>
+              <div className=' flex-grow md:flex-grow-0 md:hidden flex'>
                 {/* search bar */}
                 <form className='border border-white rounded-xl p-2 py-2 md:hidden flex items-center w-full max-w-[400px]'>
                     <input type="text" className='border-none outline-none bg-transparent w-full text-white' placeholder='What do you want to watch?'/>
