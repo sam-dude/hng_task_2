@@ -4,7 +4,8 @@ import logo from '../assets/Logo.png'
 
 export default function Home() {
   const token = import.meta.env.VITE_API_KEY
-  const [movies, setMovies] = useState([])
+  const [movies, setMovies] = useState(null)
+  const [isLoading, setIsLoading] = useState(true)
 
   const url = 'https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1';
   const config = {
@@ -19,15 +20,18 @@ export default function Home() {
     fetch(url, config)
     .then(response => {
       if (!response.ok) {
+        setIsLoading(false)
         throw new Error('Network response was not ok');
       }
       return response.json();
     })
     .then(data => {
       console.log(data.results);
+      setIsLoading(false)
       setMovies(data.results)
     })
     .catch(error => {
+      setIsLoading(false)
       console.error('Fetch error:', error);
     });
   }, [])
@@ -38,10 +42,10 @@ export default function Home() {
         {/* hero */}
         <section className='min-h-screen flex items-center relative' id="hero">
             {/* Header */}
-            <div className='flex flex-row w-full items-center absolute top-0 justify-between py-2 px-[8%] '>
+            <div className='flex flex-row w-full items-center md:flex-nowrap flex-wrap absolute top-0 justify-between py-2 px-[8%] '>
               <img src={logo} alt="logo" className='h-12'/>
 
-              <form className='border border-white rounded-xl p-2 py-2 flex items-center w-full max-w-[400px]'>
+              <form className='border border-white rounded-xl p-2 py-2 md:flex hidden items-center w-full max-w-[400px]'>
                 <input type="text" className='border-none outline-none bg-transparent w-full text-white' placeholder='What do you want to watch?'/>
                 <button className='h-4 w-4 text-white flex items-center justify-center'>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
@@ -56,7 +60,20 @@ export default function Home() {
                   <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 9h16.5m-16.5 6.75h16.5" />
                 </svg>
               </div>
+
+              <div className=' flex-grow md:flex-grow-0'>
+                {/* search bar */}
+                <form className='border border-white rounded-xl p-2 py-2 md:hidden flex items-center w-full max-w-[400px]'>
+                    <input type="text" className='border-none outline-none bg-transparent w-full text-white' placeholder='What do you want to watch?'/>
+                    <button className='h-4 w-4 text-white flex items-center justify-center'>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+                    </svg>
+                    </button>
+                </form>
+              </div>
             </div>
+            
 
             <div className='md:w-[50%] w-full px-[8%] '>
             <h1 className='text-5xl font-bold text-white'>John Wick 3 : Parabellum</h1>
@@ -76,17 +93,18 @@ export default function Home() {
         <section className='min-h-screen px-[4%] '>
           <div className='flex justify-between w-full items-end my-6'>
             <h3 className='font-semibold text-xl md:text-2xl'>Featured Movies</h3>
-            <div className='text-red-500 flex flex-row gap-2 items-center'>See more <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-  <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-</svg>
-</div>
+            <div className='text-red-500 flex flex-row gap-2 items-center'>See more 
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+            </svg>
+            </div>
           </div>
 
           {/* List of movies */}
           <div className='grid md:grid-cols-5 sm:grid-cols-3 grid-cols-1 gap-8'>
 
-            {
-              movies.slice(0, 10).map((movie, i) => (
+            { isLoading ? <div>Loading...</div> :
+              movies && movies.slice(0, 10).map((movie, i) => (
                 <div className="relative " data-testid='movie-card' key={i}>
                 <Link to={`/movies/${movie.id}`}  >
                   <img data-testid="movie-poster" src={`https://image.tmdb.org/t/p/original${movie.poster_path}`} alt='movie-poster' className=' w-full h-[450px] md:h-[300px] object-cover'/>
