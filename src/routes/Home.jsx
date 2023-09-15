@@ -34,9 +34,29 @@ export default function Home() {
 
   return (
     <main>
+      {/* Header */}
+      <div className='fixed flex flex-row w-full items-center px-[8%] justify-between py-2'>
+          <img src="./assets/logo.png" alt="logo" className='h-12'/>
+
+          <form className='border border-white rounded-xl p-2 py-2 flex items-center w-full max-w-[400px]'>
+            <input type="text" className='border-none outline-none bg-transparent w-full text-white' placeholder='What do you want to watch?'/>
+            <button className='h-4 w-4 text-white flex items-center justify-center'>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+            </svg>
+            </button>
+          </form>
+
+          <div>
+            
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-8 h-8 p-2 bg-red-500 rounded-lg text-white">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 9h16.5m-16.5 6.75h16.5" />
+            </svg>
+          </div>
+        </div>
         {/* hero */}
         <section className='min-h-screen px-[8%] flex items-center' id="hero">
-            <div className='md:w-[30%]  w-full'>
+            <div className='md:w-[30%] w-full'>
             <h1 className='text-5xl font-bold text-white'>John Wick 3 : Parabellum</h1>
             <p className='my-3 text-white'>John Wick is on the run after killing a member of the international assassins' guild, and with a $14 million price tag on his head, he is the target of hit men and women everywhere.</p>
 
